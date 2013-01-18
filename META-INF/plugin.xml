@@ -1,0 +1,28 @@
+<idea-plugin version="2">
+  <name>Sample Gosu Inspections Plugin</name>
+  <description>An example demonstrating adding custom inspections to Gosu for IntelliJ IDEA</description>
+  <version>1.0</version>
+  <vendor>Guidewire</vendor>
+  <depends>com.guidewire.gosu</depends>
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="107.105"/>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+      <localInspection implementationClass="inspections.FooInspection" language="Gosu"
+                       bundle="inspections.SampleBundle"
+                       groupKey="inspection.sample.name" key="inspection.sample.foo.name" displayName="FooInspection" shortName="Foo"
+                       enabledByDefault="true" level="WARNING"/>
+  </extensions>
+</idea-plugin>
