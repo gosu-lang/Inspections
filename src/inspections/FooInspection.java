@@ -6,10 +6,10 @@ import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.codeInspection.ex.BaseLocalInspectionTool;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.JavaElementVisitor;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiFile;
+import gw.plugin.ij.lang.psi.impl.GosuElementVisitor;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +39,7 @@ public class FooInspection extends BaseLocalInspectionTool {
   @NotNull
   @Override
   public PsiElementVisitor buildVisitor( @NotNull final ProblemsHolder holder, boolean isOnTheFly ) {
-    return new JavaElementVisitor() {
+    return new GosuElementVisitor() {
       @Override
       public void visitElement( PsiElement elem ) {
         if( isProblematic( elem ) ) {
@@ -52,8 +52,8 @@ public class FooInspection extends BaseLocalInspectionTool {
   }
 
   private static boolean isProblematic( PsiElement elem ) {
-    if( elem.getClass().getName().endsWith( "GosuTypeLiteralImpl" ) ) {
-      return elem.getTextRange().getStartOffset() < elem.getTextRange().getEndOffset();
+    if( elem.getClass().getName().endsWith( "GosuIdentifierImpl" ) ) {
+      return elem.getText().startsWith("Foo");
     }
     return false;
   }
