@@ -3,7 +3,7 @@
   <description>An example demonstrating adding custom inspections to Gosu for IntelliJ IDEA</description>
   <version>1.0</version>
   <vendor>Guidewire</vendor>
-  <depends>com.guidewire.gosu</depends>
+  <depends>com.guidewire.gosu-internal</depends>
   <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
   <idea-version since-build="107.105"/>
 

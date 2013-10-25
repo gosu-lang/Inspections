@@ -41,7 +41,6 @@ public class FooQuickFix extends LocalQuickFixAndIntentionActionOnPsiElement {
                               @NotNull PsiFile file,
                               @NotNull PsiElement startElement,
                               @NotNull PsiElement endElement ) {
-    //final GosuTypeLiteralImpl typeLit = (GosuTypeLiteralImpl)startElement;
     return startElement.isValid()
            && startElement.getManager().isInProject( startElement );
   }
@@ -52,14 +51,13 @@ public class FooQuickFix extends LocalQuickFixAndIntentionActionOnPsiElement {
                       @Nullable("is null when called from inspection") Editor editor,
                       @NotNull PsiElement startElement,
                       @NotNull PsiElement endElement ) {
-    //GosuTypeLiteralImpl typeLit = (GosuTypeLiteralImpl)startElement;
     if( !CodeInsightUtilBase.prepareFileForWrite( startElement.getContainingFile() ) ) {
       return;
     }
     try {
       file.getViewProvider().getDocument().replaceString( startElement.getTextOffset(),
                                                           startElement.getTextOffset() + startElement.getTextLength(),
-                                                          "Killroy" );
+                                                          "Bar" );
     }
     catch( IncorrectOperationException e ) {
       LOG.error( e );
